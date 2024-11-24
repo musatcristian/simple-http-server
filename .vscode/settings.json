@@ -1,0 +1,26 @@
+{
+  "window.zoomLevel": 0,
+  "editor.fontSize": 12,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always",
+    "source.fixAll.eslint": "always"
+  },
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "[c]": {
+    "editor.wordBasedSuggestions": "off",
+    "editor.semanticHighlighting.enabled": true,
+    "editor.stickyScroll.defaultModel": "foldingProviderModel",
+    "editor.suggest.insertMode": "replace"
+  },
+  "[makefile]": {
+    "editor.insertSpaces": false
+  },
+  "C_Cpp.autocomplete": "default",
+  "C_Cpp.default.cStandard": "c23",
+  "C_Cpp.default.intelliSenseMode": "gcc-x64",
+  "C_Cpp.autoAddFileAssociations": false,
+  "C_Cpp.doxygen.generateOnType": true,
+  "C_Cpp.intelliSenseEngine": "default",
+  "C_Cpp.vcFormat.indent.withinParentheses": "indent"
+}

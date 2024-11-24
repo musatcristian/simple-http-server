@@ -1,0 +1,1 @@
+gcc -Wall -Wextra -ggdb -Og -fno-omit-frame-pointer -Iinclude -c src/*.c
