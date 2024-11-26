@@ -85,7 +85,7 @@ char *url_decode(const char *src)
 
     for (size_t i = 0; i < src_len; i++)
     {
-        if (src[i] == "%" && i + 2 < src_len)
+        if (src[i] == '%' && i + 2 < src_len)
         {
 
             int hex_val = 0;
@@ -98,4 +98,8 @@ char *url_decode(const char *src)
             decoded[decoded_len++] = src[i];
         }
     }
+
+    decoded[decoded_len] = '\0';
+
+    return decoded;
 };

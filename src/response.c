@@ -24,9 +24,9 @@ void build_http_response(const char *file_name,
         return;
     }
 
-    struct stat file_stat;
-    fstat(file_fd, &file_stat);
-    off_t file_size = file_stat.st_size;
+    // struct stat file_stat;
+    // fstat(file_fd, &file_stat);
+    // off_t file_size = file_stat.st_size;
 
     *response_len = 0;
     memcpy(response, header, strlen(header));
