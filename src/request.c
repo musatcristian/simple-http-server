@@ -33,7 +33,15 @@ void *handle_request(void *arg)
         strcpy(file_ext, get_file_extension(file_name));
         char *response = (char *)malloc(BUFFER_SIZE * 2 * sizeof(char));
         size_t response_len;
-        build_http_response(file_name, file_ext, response, &response_len);
+
+        if (strlen(file_name) == 0)
+        {
+            build_http_response("index.html", "html", response, &response_len);
+        }
+        else
+        {
+            build_http_response(file_name, file_ext, response, &response_len);
+        }
 
         send(client_fd, response, response_len, 0);
 

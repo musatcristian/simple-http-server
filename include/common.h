@@ -21,5 +21,10 @@
 
 #define PORT 8080
 #define BUFFER_SIZE 104857600
+#define INDEX_HTML "HTTP/1.1 200 OK\r\n"         \
+                   "Content-Type: text/html\r\n" \
+                   "Content-Length: 45\r\n"      \
+                   "\r\n"                        \
+                   "<html><body><h1>Welcome!</h1></body></html>"
 
 #endif

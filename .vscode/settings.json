@@ -11,7 +11,11 @@
     "editor.wordBasedSuggestions": "off",
     "editor.semanticHighlighting.enabled": true,
     "editor.stickyScroll.defaultModel": "foldingProviderModel",
-    "editor.suggest.insertMode": "replace"
+    "editor.suggest.insertMode": "replace",
+    "editor.wrappingIndent": "deepIndent",
+    "editor.wrappingStrategy": "advanced",
+    "editor.wordWrapColumn": 120,
+    "editor.wordWrap": "wordWrapColumn"
   },
   "[makefile]": {
     "editor.insertSpaces": false
