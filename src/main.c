@@ -1,4 +1,5 @@
 
+#include "URI.h"
 #include "common.h"
 // #include "server.h"
 #include "request.h"
@@ -7,6 +8,76 @@
 int main(void)
 {
     // MONGO STUFF
+
+    const char *uri_string = MONGO_URI;
+
+    mongoc_uri_t *uri;
+    mongoc_client_t *client;
+    bson_t *command, reply;
+    bson_error_t error;
+
+    char *str;
+    bool retval;
+
+    /*
+     * Initialize libmongoc
+     */
+    mongoc_init();
+
+    // Create a MongoDB URI object from the string;
+    uri = mongoc_uri_new_with_error(uri_string, &error);
+    if (!uri)
+    {
+        fprintf(stderr,
+                "failed to parse URI: %s\n"
+                "error message:       %s\n",
+                uri_string, error.message);
+
+        return EXIT_FAILURE;
+    }
+
+    /*
+     * Create a new client instance, here we use the uri we just built
+     */
+    client = mongoc_client_new_from_uri(uri);
+    if (!client)
+    {
+        return EXIT_FAILURE;
+    }
+
+    // we already ahve the appname in the mongo uri
+    // mongoc_client_set_appname(client, "my-mongo-connection");
+
+    command = BCON_NEW("ping", BCON_INT32(1));
+
+    // we run above command on our DB, using the client. We get reply and error
+    // (if any)
+    retval = mongoc_client_command_simple(client, "admin", command, NULL, &reply,
+                                          &error);
+
+    if (!retval)
+    {
+        fprintf(stderr, "%s\n", error.message);
+    }
+
+    // str = bson_as_json(&reply, NULL);
+    str = bson_as_canonical_extended_json(&reply, NULL);
+
+    printf("JSON response is: %s\n", str);
+
+    /*
+     * Clean up memory
+     */
+    bson_destroy(&reply);
+    bson_destroy(command);
+    bson_free(str);
+
+    /*
+     * Release our handles and clean up libmongoc
+     */
+    mongoc_uri_destroy(uri);
+    mongoc_client_destroy(client);
+    mongoc_cleanup();
 
     // int server_fd = 0;
     // struct sockaddr_in server_addr;

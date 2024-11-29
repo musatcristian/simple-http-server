@@ -1,7 +1,7 @@
 # Compiler and Flags
 CC = gcc
 CFLAGS = -Wall -Wextra -ggdb -Iinclude $(shell pkg-config --cflags libmongoc-1.0)
-LDFLAGS = $(shell pkg-config --cflags libmongoc-1.0)
+LDFLAGS = $(shell pkg-config --libs libmongoc-1.0)
 
 # Directories
 SRC_DIR = src
