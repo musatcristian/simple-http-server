@@ -1,6 +1,7 @@
 # Compiler and Flags
 CC = gcc
-CFLAGS = -Wall -Wextra -ggdb -Iinclude
+CFLAGS = -Wall -Wextra -ggdb -Iinclude $(shell pkg-config --cflags libmongoc-1.0)
+LDFLAGS = $(shell pkg-config --cflags libmongoc-1.0)
 
 # Directories
 SRC_DIR = src
@@ -31,7 +32,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $^ -o $@
+	$(CC) $(LDFLAGS) $^ -o $@
 
 clean:
 	rm -rf $(BUILD_DIR) $(TARGET)

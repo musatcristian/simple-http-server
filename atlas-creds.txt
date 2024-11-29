@@ -1,0 +1,13 @@
+mongo-c-driver.x86_64
+
+cristutz00
+QL4OxeZM3Sf0csjo
+mongodb+srv://cristutz00:QL4OxeZM3Sf0csjo@c-project-cluster.dl897.mongodb.net/?retryWrites=true&w=majority&appName=C-project-cluster
+
+// mongo uninstall 
+/usr/local/share/mongo-c-driver/uninstall.sh
+
+
+// podman
+podman run --detach --name MyMongo -p 8081:27017 docker.io/library/mongo
+
