@@ -1,7 +1,10 @@
 # Compiler and Flags
 CC = gcc
-CFLAGS = -Wall -Wextra -ggdb -Iinclude $(shell pkg-config --cflags libmongoc-1.0)
-LDFLAGS = $(shell pkg-config --libs libmongoc-1.0)
+#CFLAGS = -Wall -Wextra -ggdb -Iinclude $(shell pkg-config --cflags libmongoc-1.0)
+CFLAGS = -Wall -Wextra -ggdb -Iinclude
+
+# you need to add libmongoc path to the ld linker
+#LDFLAGS = $(shell pkg-config --libs libmongoc-1.0)
 
 # Directories
 SRC_DIR = src
@@ -32,7 +35,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 $(TARGET): $(OBJS)
-	$(CC) $(LDFLAGS) $^ -o $@
+	$(CC) $(CFLAGS) $^ -o $@
 
 clean:
 	rm -rf $(BUILD_DIR) $(TARGET)

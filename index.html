@@ -6,8 +6,51 @@
     <title>Test Page</title>
   </head>
   <body>
-    <h1>A random cat having his time</h1>
-    <p>He's truly happy</p>
-    <img width="600px" src="./tree.webp" alt="Example Image" />
+    <div id="app"></div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel Script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/jsx">
+      const domNode = document.getElementById('app');
+      const root = ReactDOM.createRoot(domNode);
+
+      const list = [
+        {
+          id: 1,
+          value: 'gugu',
+        },
+        {
+          id: 2,
+          value: 'gaga',
+        },
+        {
+          id: 3,
+          value: 'lala',
+        },
+      ]
+
+      const handleLi = (e) => {
+        console.info("DUDUDU", e);
+      }
+
+      root.render(
+        <>
+        <h1>Develop. Preview. Ship.</h1>
+        <img width="600px" src="./tree.webp" />
+        <main>
+          <ul>
+          {
+            list.map((l) => {
+              return (
+                <li key={l.id} onClick={handleLi}>{l.value}</li>
+              );
+            })
+          }
+        </ul>
+        </main>
+        </>
+      );
+    </script>
   </body>
 </html>
